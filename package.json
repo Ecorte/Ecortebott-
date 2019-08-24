@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "discord.js": "discordjs/discord.js"
-  }
+  },
+  "name": "projet",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "https://github.com/Ecorte/Ecortebott-.git",
+  "author": "BuildTools <unconfigured@null.spigotmc.org>",
+  "license": "MIT",
+  "description": "EcorteBot"
 }
