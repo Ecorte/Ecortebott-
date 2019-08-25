@@ -9,6 +9,7 @@ client.on("debug", console.log);
 
 client.on("message", msg => {
   if (msg.author.bot) return;
+  if (msg.content.indexOf(PREFIX) !== 0) return;
   const args = msg.content
     .slice(PREFIX.length)
     .trim()
@@ -19,7 +20,7 @@ client.on("message", msg => {
   if (cmd === "ping") msg.reply("Pong!");
   if (cmd === "say") {
     msg.channel.send(args.join(" "));
-    msg.delete().then(console.log(`Message Delete`));
+    msg.delete().then(console.log("Message Delete"));
   }
   if (cmd === "role") {
     const channel = client.channels.find(r => r.name === "ecorte-logs");
