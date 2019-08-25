@@ -9,14 +9,19 @@ client.on("debug", console.log);
 
 client.on("message", msg => {
   if (msg.author.bot) return;
-  const args = msg.content.split(/ +/g);
+  const args = msg.content
+    .slice(PREFIX.length)
+    .trim()
+    .split(/ +/g);
   const cmd = args.shift().toLowerCase();
-  if (cmd === `${PREFIX}ping`) msg.reply("Pong!");
-  if (cmd === `${PREFIX}say`) {
+  console.log(args);
+  console.log(cmd);
+  if (cmd === "ping") msg.reply("Pong!");
+  if (cmd === "say") {
     msg.channel.send(args.join(" "));
     msg.delete().then(console.log(`Message Delete`));
   }
-  if (cmd === `${PREFIX}role`) {
+  if (cmd === "role") {
     const channel = client.channels.find(r => r.name === "ecorte-logs");
     const role = msg.guild.roles.find(r => r.name === args[0]);
     if (!role) return msg.channel.send("This role does not exist");
