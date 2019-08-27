@@ -1,11 +1,10 @@
-const Discord = require("discord.js");
+const { Client, MessageEmbed } = require("discord.js");
 const { TOKEN, PREFIX } = require("./config");
-const client = new Discord.Client({ disableEveryone: true });
+const client = new Client({ disableEveryone: true });
 
 client.on("ready", () => console.log("Ready"));
 client.on("error", console.error);
 client.on("warn", console.warn);
-client.on("debug", console.log);
 
 client.on("message", msg => {
   if (msg.author.bot) return;
@@ -35,6 +34,15 @@ client.on("message", msg => {
       msg.channel.send(`Role: ${role} added to ${msg.author}.`);
       channel.send(`Role: ${role} added to ${msg.author}.`);
     }
+  }
+  if (cmd === "sinfo") {
+    const embed = new MessageEmbed()
+      .setDescription(msg.guild.name)
+      .setThumbnail(msg.guild.iconURL())
+      .addField("Members", msg.guild.membercount)
+      .setFooter(msg.guild.owner.user.tag, msg.guild.owner.user.avatarURL())
+      .setTimestamp();
+    msg.channel.send(embed);
   }
 });
 
