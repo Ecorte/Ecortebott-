@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "discord.js": "discordjs/discord.js"
+    "discord.js": "discordjs/discord.js",
+    "node-fetch": "^2.6.0"
   },
   "name": "projet",
   "version": "1.0.0",
