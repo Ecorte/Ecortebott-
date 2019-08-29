@@ -30,7 +30,10 @@
         "error",
         2
       ],
-      "curly": "off"
+      "curly": "off",
+      "no-trailing-spaces": "off",
+      "prefer-template": "off",
+      "no-eval": "off"
     }
   }
 }
