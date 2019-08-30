@@ -3,6 +3,7 @@ const { TOKEN, PREFIX } = require("./config");
 const client = new Client({ disableEveryone: true });
 
 client.PREFIX = PREFIX;
+require("./util/functions")(client);
 client.mongoose = require("./util/mongoose.js");
 
 client.commands = new Collection();
