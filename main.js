@@ -12,6 +12,7 @@ client.commands.set("say", require("./commands/say.js"));
 client.commands.set("sinfo", require("./commands/sinfo.js"));
 client.commands.set("animals", require("./commands/animals.js"));
 client.commands.set("eval", require("./commands/eval.js"));
+client.commands.set("config", require("./commands/config.js"));
 
 client.on("ready", () => require("./events/ready.js")(client));
 client.on("message", msg => require("./events/message.js")(client, msg));

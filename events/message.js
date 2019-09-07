@@ -1,23 +1,11 @@
-// client.on("message", msg => {
-//  if (msg.author.bot) return;
-//  if (msg.content.indexOf(PREFIX) !== 0) return;
-//  const args = msg.content
-//    .slice(PREFIX.length)
-//    .trim()
-//    .split(/ +/g);
-//  const cmd = args.shift().toLowerCase();
-//
-// });
 
-module.exports = (client, message) => {
-  if (message.author.bot) return;
-  if (message.content.indexOf(client.PREFIX) !== 0) return;
-  const args = message.content
-    .slice(client.PREFIX.length)
-    .trim()
-    .split(/ +/g);
+module.exports = async (client, message) => {
+  const settings = await client.getGuild(message.guild);
+  const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
+  if (message.author.bot) return;
+  if (message.content.indexOf(settings.prefix) !== 0) return;
 
-  if (client.commands.has(command))
-    client.commands.get(command)(client, message, args);
+  //  if (client.commands.has(command)) client.commands.get(command)(client, message, args, settings);
+  if (client.commands.has(command)) client.commands.get(command)(client, message, args, settings);
 };
