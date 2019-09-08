@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 
-module.exports = async (client, message, args) => {
+exports.run = async (client, message, args) => {
   message.delete({ timeout: 1 });
   if (args[0] === "cat") {
     const cat = await fetch("http://aws.random.cat/meow")
@@ -62,4 +62,8 @@ module.exports = async (client, message, args) => {
       "Animals available: cat, dog, fox, pikachu, koala, bird"
     );
   }
+};
+
+exports.help = {
+  name: "animals"
 };

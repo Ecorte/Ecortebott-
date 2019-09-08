@@ -6,6 +6,7 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (message.content.indexOf(settings.prefix) !== 0) return;
 
-  //  if (client.commands.has(command)) client.commands.get(command)(client, message, args, settings);
-  if (client.commands.has(command)) client.commands.get(command)(client, message, args, settings);
+  const cmd = client.commands.get(command);
+  if (!cmd) return undefined;
+  cmd.run(client, message, args, settings);
 };
