@@ -7,6 +7,17 @@ require("./util/functions")(client);
 client.mongoose = require("./util/mongoose.js");
 client.commands = new Collection();
 
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error;
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return undefined;
+    const event = require(`./events/${file}`);
+    const eventName = file.split(".")[0];
+    console.log(`Event ${eventName} loaded`);
+    client.on(eventName, event.bind(null, client));
+  });
+});
+
 fs.readdir("./commands/", (err, files) => {
   if (err) return console.error;
   files.forEach(file => {
@@ -17,11 +28,6 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(cmdName, props);
   });
 });
-
-client.on("ready", () => require("./events/ready.js")(client));
-client.on("message", msg => require("./events/message.js")(client, msg));
-client.on("guildMemberAdd", member => require("./events/guildMemberAdd.js")(client, member));
-client.on("guildCreate", guild => require("./events/guildCreate.js")(client, guild));
 
 client.on("error", console.error);
 client.on("warn", console.warn);
