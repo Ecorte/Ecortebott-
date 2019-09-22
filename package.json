@@ -1,39 +1,31 @@
 {
-  "dependencies": {
-    "discord.js": "discordjs/discord.js",
-    "mongoose": "^5.6.11",
-    "node-fetch": "^2.6.0"
+  "name": "discord-bot-ts",
+  "version": "0.1.0",
+  "description": "Un simple bot Typescript pour la série getCodingKnowledge",
+  "main": "index.js",
+  "scripts": {
+    "build:gulp": "gulp build",
+    "watch:gulp": "gulp watch",
+    "serve:gulp": "gulp serve",
+    "start:gulp": "gulp start",
+    "serve": "npm run serve:gulp -s",
+    "watch": "npm run watch:gulp -s",
+    "build": "npm run build:gulp -s",
+    "start": "npm run start:gulp -s"
   },
-  "name": "projet",
-  "version": "1.0.0",
-  "main": "main.js",
-  "repository": "https://github.com/Ecorte/Ecortebott-.git",
-  "author": "BuildTools <unconfigured@null.spigotmc.org>",
+  "author": "getCodingKnowledge <info@getcodingknowledge.com>",
   "license": "MIT",
-  "description": "EcorteBot",
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "eslint-config-aqua": "^6.0.2"
+    "@types/node": "^12.6.8",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^4.0.2",
+    "nodemon": "^1.19.1",
+    "typescript": "^3.5.3"
   },
-  "eslintConfig": {
-    "extends": "aqua/node",
-    "rules": {
-      "linebreak-style": [
-        "error",
-        "windows"
-      ],
-      "quotes": [
-        "warn",
-        "double"
-      ],
-      "indent": [
-        "error",
-        2
-      ],
-      "curly": "off",
-      "no-trailing-spaces": "off",
-      "prefer-template": "off",
-      "no-eval": "off"
-    }
+  "dependencies": {
+    "discord.js": "discordjs/discord.js"
   }
 }
